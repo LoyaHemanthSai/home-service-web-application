@@ -12,15 +12,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 
 function Header() {
 
   const {data}=useSession();
 
+  const router = useRouter();
+
   useEffect(()=>{
     console.log(data);
   },[data])
 
+  const handleSignOut = async()=>{
+    await signOut();
+    router.push('/');
+  }
   return (
     <div className='p-5 shadow-sm flex  justify-between
     '>
@@ -59,7 +66,7 @@ function Header() {
     <DropdownMenuItem>
      <Link href={'/mybooking'} className=' cursor-pointer'>My Booking</Link> 
       </DropdownMenuItem>
-    <DropdownMenuItem onClick={()=>signOut()} className=' cursor-pointer'>Logout</DropdownMenuItem>
+    <DropdownMenuItem onClick={handleSignOut} className=' cursor-pointer'>Logout</DropdownMenuItem>
    
   </DropdownMenuContent>
 </DropdownMenu>
