@@ -66,7 +66,7 @@ function Header() {
     <DropdownMenuItem>
      <Link href={'/mybooking'} className=' cursor-pointer'>My Booking</Link> 
       </DropdownMenuItem>
-    <DropdownMenuItem onClick={handleSignOut} className=' cursor-pointer'>Logout</DropdownMenuItem>
+    <DropdownMenuItem href={'/'} onClick={handleSignOut} className=' cursor-pointer'>Logout</DropdownMenuItem>
    
   </DropdownMenuContent>
 </DropdownMenu>
