@@ -1,8 +1,7 @@
 import NextAuth from "next-auth/next";
 
 
-
-export const authOptions = {
+export const authOptions= {
     providers: [
     {
         id: "descope",
