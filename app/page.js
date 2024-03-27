@@ -1,0 +1,55 @@
+"use client"
+
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Header from "./_Components/Header";
+import Hero from "./_Components/Hero";
+import CategoryList from "./_Components/CategoryList";
+import GlobalApi from "./_services/GlobalApi";
+import { useEffect, useState } from "react";
+import BusinessList from "./_Components/BusinessList";
+export default function Home() {
+
+  const [categoryList,setCategoryList] = useState([])
+
+  
+  useEffect(()=>{
+    getCategoryList();
+  },[])
+
+
+  const getCategoryList = () =>{
+    GlobalApi.getCategory().then(resp =>{
+      setCategoryList(resp.categories);
+    })
+  }
+
+  const [businessList,setBusinessList] = useState([])
+
+  useEffect(()=>{
+    getAllBusinessList();
+  },[])
+
+
+  // Used to get All Business List
+
+  const getAllBusinessList = () =>{
+    GlobalApi.getAllBusinessList().then(resp=>{
+      setBusinessList(resp.businessLists);
+    })
+  }
+
+
+
+
+
+
+
+  return (
+    <div>
+      <Hero/>
+      <CategoryList categoryList={categoryList}/>
+      <BusinessList businessList={businessList} title={'Popular Services'}/>
+    </div>
+  );
+}
