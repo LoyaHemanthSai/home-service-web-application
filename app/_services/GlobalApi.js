@@ -115,10 +115,10 @@ const createNewBooking = async(businessId,date,time,userEmail,userName) =>{
 
 }
 
-const BusinessBookedSlot = async()=>{
+const BusinessBookedSlot = async(businessId,date)=>{
   const mutationQuery = gql`
     query BusinessBookedSlot {
-      bookings(where: {businessList: {id: ""}, date: ""}) {
+      bookings(where: {businessList: {id: "`+businessId+`"}, date: "`+date+`"}) {
         date
         time
       }
