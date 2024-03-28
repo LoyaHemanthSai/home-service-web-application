@@ -26,7 +26,6 @@ function BookingSection({children,business}) {
     const {data}=useSession();
     useEffect(()=>{
         getTime();
-       
     },[])
 
     useEffect(()=>{
@@ -73,7 +72,7 @@ function BookingSection({children,business}) {
                     console.log(resp);
                     if(resp)
                     {
-                        setDate();
+                        setDate('');
                         setSelectedTime('');
                         toast('Service Booked successfully!')
                         // Toast Msg 
